@@ -9,7 +9,9 @@
         </section>
         <div class="menu-area">
             <nav class="main-menu">
-                Menu
+                <?php wp_nav_menu(
+                    array('theme_location' => 'wp-devs-main_menu', 'depth' => 2)); 
+                    ?>
             </nav>
         </div>
         </header>

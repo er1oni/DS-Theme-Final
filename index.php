@@ -1,27 +1,24 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-    <meta charset="<?php bloginfo(('charset'))?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <?php wp_head(); ?> 
-    <?php get_header(); ?>
-</head>
-<body <?php body_class(); ?> >
-        <!--  -->
-        <div id="content" class="site-content">
-            <div id="primary" class="content-area">
-                <main id="main" class="site-main">
-                    <section class="hero">
-                        hero
+section class="home-blog">
+                        <div class="container">
+                            <div class="blog-items">
+                                <?php
+                                if( have_posts() ):
+                                    while( have_posts() ): the_post();
+                                        ?>
+                                            <article>
+                                                <h2><?php the_title(); ?></h2>
+                                                <div class="meta-info">
+                                                    <p>Posted in <?php echo get_the_date(); ?> by <?php the_author_posts_link();?></p>
+                                                    <p>Catgeries: <?php the_category(); ?> </p>
+                                                    <p> <?php the_tags(); ?></p>
+                                                </div>
+                                                <?php the_content(); ?>
+                                            </article>
+                                        <?php
+                                    endwhile;
+                                else: ?>
+                                    <p>Nothing to be displayed!</p>          
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </section>
-                    <section class="services">
-                        Services
-                    </section>
-                    <section class="home-blog">
-                        blog
-                    </section>
-                </main>
-            </div>
-        </div>
-  <?php get_footer(); ?> 
